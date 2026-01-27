@@ -1,18 +1,22 @@
-import { readFileSync } from "fs";
 import { defineConfig } from "vite";
+import { readFileSync } from "fs";
+import { marked } from "marked";
 import { parse } from "./src/parse.js";
 
 export default defineConfig({
   base: "./",
   plugins: [
     {
-      name: "fill-blank-transform",
+      name: "markdown-fill-blank",
 
       transformIndexHtml(html) {
-        const text = readFileSync("src/input.txt", "utf8");
-        const content = parse(text);
+        const md = readFileSync("src/content.md", "utf8");
 
-        return html.replace("<!-- __CONTENT__ -->", content);
+        const htmlFromMd = marked.parse(md);
+
+        const filled = parse(htmlFromMd);
+
+        return html.replace("<!-- __CONTENT__ -->", filled);
       },
     },
   ],

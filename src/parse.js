@@ -23,7 +23,7 @@ export function parse(text) {
     }
   );
 
-  return out.replace(/\n/g, "<br>");
+  return out;
 }
 
 function blank(answer, id) {
