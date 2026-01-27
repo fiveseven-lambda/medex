@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 import { parse } from "./src/parse.js";
 
 export default defineConfig({
+  base: "./",
   plugins: [
     {
       name: "fill-blank-transform",
