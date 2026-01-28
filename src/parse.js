@@ -20,8 +20,7 @@ export function parse(text) {
 }
 
 function blank(answer, id, number) {
-  return `
-<span class="blank"
+  return `<span class="blank"
   data-answer="${answer}"
   ${id ? `data-id="${id}"` : ""}
 >
